@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Understanding CSS</title>
+
+	<meta name="description" content="A presentation about CSS for freeCodeCamp Manila">
+	<meta name="author" content="Jerome Estiller">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+
+			<section>
+				<p class="is-text-medium">jromest.github.io/understanding-css</p>
+			</section>
+			<section>
+				<blockquote cite="https://github.com/getify/You-Dont-Know-JS/blob/master/preface.md#mission">
+					"I am not content, nor should you be, at stopping once something just works, and not really knowing why."
+				</blockquote>
+				<p class="is-text-small">- Kyle Simpson, You Don't Know JS: Up and Going</p>
+			</section>
+
+			<section>
+				<h1>Understanding CSS</h1>
+				<h3>Learn how to love CSS</h3>
+			</section>
+
+			<section class="is-left-align">
+				<h2>Hi, I'm Jrom</h2>
+				<ul>
+					<li>web designer</li>
+					<li>front end developer in training</li>
+				</ul>
+				<p>@jrom_est &#8212;
+					<a href="https://twitter.com/jrom_est">Twitter</a>
+				</p>
+				<p>@jromest &#8212;
+					<a href="https://github.com/jromest">Github</a>,
+					<a href="https://codepen.io/jromest/">Codepen</a> ...
+				</p>
+			</section>
+
+			<section>
+				<h2>Overview</h2>
+				<ul>
+					<li class="fragment">Why we hate CSS and how to love it</li>
+					<li class="fragment">CSS and beyond</li>
+					<li class="fragment">CSS methodologies, and;</li>
+					<li class="fragment">General guidelines</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Disclaimer</h2>
+				<ul>
+					<li class="fragment">not an expert</li>
+					<li class="fragment">just sharing what I've learn</li>
+				</ul>
+			</section>
+
+			<section class="is-left-align">
+				<h2>CSS</h2>
+				<p class="fragment">&#8212; is an easy and hard language</p>
+				<p class="fragment">&#8212; an append-only language</p>
+				<p class="fragment">&#8212; "Once you write CSS, it can never be deleted."</p>
+			</section>
+
+			<section>
+				<h2>Let's begin</h2>
+			</section>
+
+			<section>
+				<h2>CSS Box Model</h2>
+				<div class="fragment box-model">
+					<figure>
+						<img src="img/box-model-standard-small.png" alt="standard box model">
+						<figcaption>
+							<a class="is-text-xsmall" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Box_model">Image source</a>
+						</figcaption>
+					</figure>
+				</div>
+			</section>
+
+			<section>
+				<h2>Box Sizing</h2>
+				<p class="fragment">content-box vs border-box</p>
+			</section>
+
+			<section>
+				<h2>content-box</h2>
+				<div class="fragment box-model">
+					<figure>
+						<img src="img/box-model-standard-small.png" alt="standard box model">
+						<figcaption>
+							<a class="is-text-xsmall" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Box_model">Image source</a>
+						</figcaption>
+					</figure>
+				</div>
+			</section>
+
+			<section>
+				<h2>border-box</h2>
+				<div data-markdown>
+					<script type="text/template">
+						```
+						.container {
+							box-sizing: border-box;
+						}
+						```
+					</script>
+				</div>
+			</section>
+
+			<section>
+				<p>border-box...</p>
+				<div class="fragment box-model">
+					<figure>
+						<img src="img/box-model-alt-small.png" alt="border-box box model">
+						<figcaption>
+							<a class="is-text-xsmall" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Box_model">Image source</a>
+						</figcaption>
+					</figure>
+
+				</div>
+			</section>
+
+			<section>
+				<h2>CSS Resets</h2>
+				<div class="fragment" data-markdown>
+					<script type="text/template">
+						```
+						* {
+							margin: 0;
+							padding: 0;
+							box-sizing: border-box;
+						}
+						```
+					</script>
+				</div>
+				<ul class="fragment">
+					<li>
+						<a href="https://meyerweb.com/eric/tools/css/reset/">reset.css</a>
+					</li>
+					<li>
+						<a href="https://necolas.github.io/normalize.css/">normalize.css</a>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Inline vs Block vs Inline Block Elements</h2>
+				<table class="fragment">
+					<thead>
+						<tr>
+							<th>Inline</th>
+							<th>Block</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>a</td>
+							<td>div</td>
+						</tr>
+						<tr>
+							<td>span</td>
+							<td>p</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section>
+				<p>inline vs block vs inline block</p>
+				<div class="fragment box-model">
+					<figure>
+						<img src="img/inline-vs-block-vs-inlineblock.png" alt="inline vs block vs inline block">
+						<figcaption>
+							<a class="is-text-xsmall" href="http://dustwell.com/div-span-inline-block.html">Image source</a>
+						</figcaption>
+					</figure>
+				</div>
+			</section>
+
+			<section>
+				<h2>Selector Specificity</h2>
+				<ul>
+					<li class="fragment">!important</li>
+					<li class="fragment">inline style</li>
+					<li class="fragment">ID</li>
+					<li class="fragment">class, attributes and psuedo-classes</li>
+					<li class="fragment">element and psuedo-element</li>
+				</ul>
+			</section>
+
+			<section class="specificity-calculator">
+				<p data-height="638" data-theme-id="dark" data-slug-hash="NBwXWe" data-default-tab="result" data-user="jromest" data-pen-title="Specificity Calculator"
+				 class="codepen">See the Pen
+					<a href="https://codepen.io/jromest/pen/NBwXWe/">Specificity Calculator</a> by Jrom (
+					<a href="https://codepen.io/jromest">@jromest</a>) on
+					<a href="https://codepen.io">CodePen</a>.</p>
+				<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+			</section>
+
+			<section>
+				<h2>CSS for Layouts</h2>
+				<ul>
+					<li class="fragment">Once upon a time... Table</li>
+					<li class="fragment">Floats - stands for years</li>
+					<li class="fragment">Flexbox</li>
+					<li class="fragment">CSS Grid</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>CSS and beyond</h2>
+				<ul>
+					<li class="fragment">CSS Preprocessor</li>
+					<ul class="fragment">
+						<li>
+							<a href="http://lesscss.org/">LESS</a>
+						</li>
+						<li>
+							<a href="https://sass-lang.com/">SASS</a>
+						</li>
+						<li>
+							<a href="http://stylus-lang.com/">Stylus</a>
+						</li>
+					</ul>
+				</ul>
+			</section>
+			<section>
+				<ul>
+					<li>CSS Postprocessor</li>
+					<ul>
+						<li class="fragment">
+							<a href="https://postcss.org/">PostCSS</a>
+						</li>
+						<ul>
+							<li class="fragment">
+								<a href="http://cssnext.io/">cssnext</a>
+								<br> &#8212; allows to use experimental CSS features
+							</li>
+							<li class="fragment">
+								<a href="https://github.com/css-modules/css-modules">CSS Modules</a>
+								<br> &#8212; automatically changes classes to avoid name conflicts
+							</li>
+							<li class="fragment">
+								<a href="https://stylelint.io/">stylelint</a>
+								<br> &#8212; linting for CSS</li>
+						</ul>
+					</ul>
+				</ul>
+			</section>
+
+			<section>
+				<h2>CSS Methodologies</h2>
+				<ul>
+					<li class="fragment">
+						<a href="http://oocss.org/">OOCSS</a>
+						<br> &#8212; separates layout and skin(fonts, color, etc), and container and element
+					</li>
+					<li class="fragment">
+						<a href="https://smacss.com/">SMACSS</a>
+						<br> &#8212; base rules, layout rules, modules, state rules, and theme rules
+					</li>
+				</ul>
+			</section>
+
+			<section class="is-left-align">
+				<ul>
+					<li>
+						<a href="http://getbem.com/">BEM</a>
+					</li>
+				</ul>
+				<div class="fragment" data-markdown>
+					<script type="text/template">
+							```
+							<button class="search-form__button search-form__button--disabled">
+								Search
+							</button>
+							```
+						</script>
+				</div>
+				<ul>
+					<li class="fragment">
+						<a href="https://acss.io/">Atomic CSS</a>
+					</li>
+				</ul>
+				<div class="fragment" data-markdown>
+					<script type="text/template">
+								```
+								<button class="f6 br3 ph3 pv2 white bg-dark-gray hover-bg-light-gray">
+									Search
+								</button>
+								```
+							</script>
+				</div>
+				<ul>
+					<li class="fragment">
+						<a href="http://cssinjs.org/">CSS in JS</a>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>CSS General Guidelines</h2>
+				<p>By
+					<a href="http://paulcpederson.com/articles/css-for-people-who-hate-css/">Paul C Pederson</a>
+				</p>
+			</section>
+
+			<section>
+				<h2>1. Use Low-Specificity Selectors</h2>
+				<div class="fragment" data-markdown>
+					<script type="text/template">
+						```
+						.navigation a {
+							color: blue;
+						}
+						```
+					</script>
+				</div>
+				<div class="fragment" data-markdown>
+					<script type="text/template">
+							```
+							.nav-link {
+								color: blue;
+							}
+							```
+						</script>
+				</div>
+				<div class="fragment" data-markdown>
+					<script type="text/template">
+						```
+						.nav-link {
+							color: blue;
+							font-size: 2rem;
+						}
+
+						.nav-link-red {
+							color: red;
+						}
+						```
+					</script>
+				</div>
+			</section>
+
+			<section>
+				<h2>2. Don't Use ID or Element Selectors</h2>
+				<div class="fragment" data-markdown>
+					<script type="text/template">
+							```
+							#banner {
+								background-color: blue;
+							}
+
+							#banner h1 {
+								color: white
+							}
+							```
+					</script>
+				</div>
+				<div class="fragment" data-markdown>
+					<script type="text/template">
+							```
+							.banner {
+								background-color: blue;
+							}
+
+							.banner-title {
+								color: white;
+							}
+							```
+					</script>
+				</div>
+			</section>
+
+			<section>
+				<h2>3. Don't Depend on a Certain Markup Structure</h2>
+				<div class="fragment" data-markdown>
+					<script type="text/template">
+						```
+						.header ul li a {
+							margin-right: 20px;
+						}
+						```
+					</script>
+				</div>
+				<div class="fragment" data-markdown>
+					<script type="text/template">
+						```
+						.header-link {
+							margin-right: 20px;
+						}
+						```
+					</script>
+				</div>
+			</section>
+
+			<section>
+				<h2>4. Don't Use Inline Styles</h2>
+				<p class="fragment">Inline styles are
+					<em>rude</em>. The only thing in CSS land that can override them is an
+					<code>!important</code> rule.</p>
+			</section>
+
+			<section>
+				<h2>5. Don't Use !important</h2>
+				<p class="fragment">...unless you have to.</p>
+			</section>
+
+			<section>
+				<h2>6. Prefix Modifier Classes</h2>
+				<div class="fragment" data-markdown>
+					<script type="text/template">
+						```
+						.btn {
+							padding: .25em;
+							background-color: blue;
+							color: white;
+						}
+						
+						.btn-red {
+							background-color: red;
+						}
+						```
+					</script>
+				</div>
+				<pre class="fragment"><code class="hljs"><a href="/" class="btn btn-red"></a></code></pre>
+			</section>
+
+			<section>
+				<h2>7. Write Small Rules</h2>
+				<div class="fragment" data-markdown>
+					<script type="text/template">
+						```
+						.feature-1 h1,
+						.feature-1 h2,
+						.feature-1 p {
+							color: #FFF;
+						}
+
+						.feature-1 a,
+						.feature-2 a,
+						.feature-3 a {
+							color: #FFF;
+							text-decoration: underline;
+						}
+						```
+					</script>
+				</div>
+			</section>
+
+			<section>
+				<p>Small rules...</p>
+				<div class="fragment" data-markdown>
+					<script type="text/template">
+						```
+						.text-white {
+							color: #FFF;
+						}
+
+						.text-underline {
+							text-decoration: underline;
+						}
+						```
+					</script>
+				</div>
+			</section>
+
+			<section>
+				<h2>8. Use a Prefix for JavaScript Hooks</h2>
+				<p>Using prefix
+					<code>js-</code> for classes.</p>
+			</section>
+
+			<section>
+				<h2>Further reading...</h2>
+				<ul>
+					<li>Positioned Elements</li>
+					<li>Different Units</li>
+					<li>Psuedo-classes</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Happy Styling!</h2>
+				<h3>Thank you!</h3>
+				<p>Questions?</p>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/search/search.js', async: true },
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+				{ src: 'plugin/notes/notes.js', async: true }
+			]
+		});
+
+	</script>
+
+</body>
+
+</html>

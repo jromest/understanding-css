@@ -1,0 +1,28 @@
+code {
+  background-color: #3f3f3f;
+}
+
+.is-left-align {
+  text-align: left;
+}
+
+p.is-text-medium {
+  font-size: 1.45em;
+}
+
+p.is-text-small {
+  font-size: 0.75em;
+}
+
+a.is-text-xsmall {
+  font-size: 0.5em;
+}
+
+div.box-model {
+  width: 65%;
+  margin: 0 auto;
+}
+
+section.specificity-calculator {
+  top: 0;
+}
